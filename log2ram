@@ -71,7 +71,8 @@ createZramLogDrive () {
 	fi
 	echo ${COMP_ALG} > /sys/block/zram${RAM_DEV}/comp_algorithm
 	echo ${LOG_DISK_SIZE} > /sys/block/zram${RAM_DEV}/disksize
-	echo ${SIZE} > /sys/block/zram${RAM_DEV}/mem_limit
+	# Not supported on Linux 3.16
+    # echo ${SIZE} > /sys/block/zram${RAM_DEV}/mem_limit
 	mke2fs -t ext4 /dev/zram${RAM_DEV}
 }
 
